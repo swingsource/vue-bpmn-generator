@@ -123,7 +123,7 @@ export default {
       })
 
       if (this.bpmnXml) {
-        this.transformXmlToCanvas(xmlStr)
+        this.transformXmlToCanvas(this.bpmnXml)
       } else {
         this.bpmnModeler.createDiagram()
       }

@@ -9,11 +9,6 @@ const routes = [
     name: 'Bpmn',
     component: () => import('@/views/bpmn/Index.vue')
   }
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({
