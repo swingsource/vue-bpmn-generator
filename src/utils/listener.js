@@ -61,8 +61,6 @@ export default {
         }
         try {
           const shape = e.element ? elementRegistry.get(e.element.id) : e.shape
-          console.log('点击或修改了shape')
-          console.log(shape)
           callback(eventType, shape)
         } catch (e) {
           // throw new Error('Can not get shape!')

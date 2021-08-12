@@ -16,7 +16,7 @@
         </el-col>
       </el-row>
       <el-row>
-       <el-col :span="8">
+       <el-col :span="10">
          <el-form-item>
            <el-select v-model="form.operator" placeholder="请选择">
              <el-option v-for="(item, index) of operatorList"
@@ -27,7 +27,7 @@
            </el-select>
          </el-form-item>
        </el-col>
-        <el-col :span="14" :offset="2">
+        <el-col :span="12" :offset="2">
           <el-input v-model="form.value" size="small"></el-input>
         </el-col>
       </el-row>
@@ -92,12 +92,6 @@ export default {
       listener.addEventBusListener(this.customBpmnModeler, (eventType, shape) => {
         this.shape = shape
         const conditionExpression = shape.businessObject && shape.businessObject.conditionExpression && shape.businessObject.conditionExpression.body
-        console.log('-------------conditionExpression-----------------')
-        console.log(shape.businessObject.name)
-        console.log(shape.businessObject.conditionExpression)
-        console.log(shape.businessObject.conditionExpression.body)
-        console.log(conditionExpression)
-        console.log('----------------------end------------------------')
         if (conditionExpression && conditionExpression.startsWith('#') && conditionExpression.endsWith('}')) {
           let expression = conditionExpression.slice(2)
           expression = expression.slice(0, expression.length - 1)
@@ -119,8 +113,6 @@ export default {
       const newCondition = moddle.create('bpmn:FormalExpression', {
         body: this.transformDescToExpression()
       })
-      console.log('---------------updatePropertiesToModeler----------------------')
-      console.log(newCondition)
       modeling.updateProperties(this.shape, {
         conditionExpression: newCondition
       })
@@ -132,8 +124,6 @@ export default {
     transformExpressionToDesc (exp, operator) {
       const expList = exp.split(operator)
       const [condition, value] = expList
-      console.log('转换之后的表达式')
-      console.log(condition, operator, value)
       this.form.condition = condition
       this.form.operator = operator
       this.form.value = value
@@ -146,7 +136,10 @@ export default {
 .condition-property
   margin-top 20px
   padding 10px 20px
-  background #cccccc
+  background #eeeeee
+  .condition-title
+    line-height 24px
+    font-size 14px
   .the-hole-row >>> .el-select
     width 100%
 </style>

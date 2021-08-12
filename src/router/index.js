@@ -7,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'Bpmn',
-    component: () => import('@/views/bpmn/Basic')
+    component: () => import('@/views/bpmn/Index.vue')
   }
   // {
   //   path: '/about',

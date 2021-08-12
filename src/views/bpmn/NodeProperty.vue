@@ -55,8 +55,6 @@ export default {
     },
     form: {
       handler (nv) {
-        console.log('form --------------')
-        console.log(nv)
         this.updatePropertiesToModeler()
       },
       deep: true
@@ -68,7 +66,7 @@ export default {
   methods: {
     initListener () {
       listener.addModelerListener(this.customBpmnModeler, (eventType, shape) => {
-        console.log('新建了' + eventType)
+        // console.log('新建了' + eventType)
       })
       listener.addEventBusListener(this.customBpmnModeler, (eventType, shape) => {
         const { id, name, documentation } = shape.businessObject
@@ -87,7 +85,8 @@ export default {
       modeling.updateProperties(this.shape, {
         id: this.form.nodeId,
         name: this.form.nodeName,
-        documentation: [newDoc]
+        documentation: [newDoc],
+        candidateUsers: '#{' + this.form.nodeId + '}'
       })
     }
   }
@@ -97,5 +96,5 @@ export default {
 <style scoped lang="stylus">
 .node-property
   padding 10px 20px
-  background #cccccc
+  background #eeeeee
 </style>
