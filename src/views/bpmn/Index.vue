@@ -88,7 +88,7 @@ export default {
       return this.bpmnModeler
     },
     conditionPropertyVisible () {
-      return this.bpmnModeler && this.judgeCurrentShapeType(this.currentShape) === 'bpmn:SequenceFlow'
+      return this.bpmnModeler && this.currentShape && this.judgeCurrentShapeType(this.currentShape) === 'bpmn:SequenceFlow'
     }
   },
   mounted () {
@@ -126,6 +126,7 @@ export default {
         this.transformXmlToCanvas(this.bpmnXml)
       } else {
         this.bpmnModeler.createDiagram()
+        this.success()
       }
     },
     // 将字符串转换成图显示出来
